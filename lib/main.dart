@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
 int _selectedIndex = 0;
@@ -26,6 +27,15 @@ class StatelessNewTaskPage extends StatelessWidget {
   }
 }
 
+class StatelessPetPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: PetPage(),
+    );
+  }
+}
+
 class TaskPage extends StatefulWidget {
   TaskPage({Key key}) : super(key: key);
   @override
@@ -36,6 +46,12 @@ class NewTaskPage extends StatefulWidget {
   NewTaskPage({Key key}) : super(key: key);
   @override
   _NewTaskPageState createState() => _NewTaskPageState();
+}
+
+class PetPage extends StatefulWidget {
+  PetPage({Key key}) : super(key: key);
+  @override
+  _PetPageState createState() => _PetPageState();
 }
 
 class _TaskPageState extends State<TaskPage> {
@@ -49,7 +65,7 @@ class _TaskPageState extends State<TaskPage> {
       _selectedIndex = index;
     });
     if (index == 1) {
-      //runApp(StatelessPetPage());
+      runApp(StatelessPetPage());
     } else if (index == 2) {
       //runApp(StatelessShopPage());
     } else if (index == 3) {
@@ -220,3 +236,67 @@ class _NewTaskPageState extends State<NewTaskPage> {
     );
   }
 }
+
+class _PetPageState extends State<PetPage> {
+  String petName = "pet";
+  void navBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    if (index == 0) {
+      runApp(StatelessTaskPage());
+    } else if (index == 2) {
+      //runApp(StatelessShopPage());
+    } else if (index == 3) {
+      //runApp(StatelessSettingsPage());
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Pet',
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.white,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: ListView(children: <Widget>[
+          Column(
+            children: <Widget>[Text("$petName stats")],
+          ),
+        ]),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.list),
+                label: 'Tasks',
+                backgroundColor: Colors.yellow),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.pets),
+                label: 'Pet',
+                backgroundColor: Colors.red),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_bag),
+                label: 'Shop',
+                backgroundColor: Colors.green),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.more_horiz),
+              label: 'Settings',
+              backgroundColor: Colors.blue,
+            ),
+          ],
+          type: BottomNavigationBarType.shifting,
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.black,
+          iconSize: 40,
+          onTap: navBar,
+          elevation: 5),
+    );
+  }
+}
+
