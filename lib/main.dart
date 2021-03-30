@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 int _selectedIndex = 0;
 
@@ -135,7 +136,8 @@ class _TaskPageState extends State<TaskPage> {
   }
 }
 
-enum TaskImportance {Highest, Medium, Least}
+enum TaskImportance { Highest, Medium, Least }
+
 class _NewTaskPageState extends State<NewTaskPage> {
   TaskImportance _importance = TaskImportance.Highest;
   TextEditingController taskName = TextEditingController();
@@ -175,62 +177,71 @@ class _NewTaskPageState extends State<NewTaskPage> {
             ),
           ),
           Container(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              controller: taskName,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Task details',
+              ),
+            ),
+          ),
+          Container(
             child: Text("Task importance"),
           ),
-          ListTile(  
-          title: const Text('Highest'),  
-          leading: Radio(  
-            value: TaskImportance.Highest,  
-            groupValue: _importance,  
-            onChanged: (TaskImportance value) {  
-              setState(() {  
-                _importance = value;  
-              });  
-            },  
-          ),  
-        ),  
-        ListTile(  
-          title: const Text('Medium'),  
-          leading: Radio(  
-            value: TaskImportance.Medium,  
-            groupValue: _importance,  
-            onChanged: (TaskImportance value) {  
-              setState(() {  
-                _importance = value;  
-              });  
-            },  
-          ),  
-        ),  
-        ListTile(  
-          title: const Text('Least'),  
-          leading: Radio(  
-            value: TaskImportance.Least,  
-            groupValue: _importance,  
-            onChanged: (TaskImportance value) {  
-              setState(() {  
-                _importance = value;  
-              });  
-            },  
-          ),  
-        ),
+          ListTile(
+            title: const Text('Highest'),
+            leading: Radio(
+              value: TaskImportance.Highest,
+              groupValue: _importance,
+              onChanged: (TaskImportance value) {
+                setState(() {
+                  _importance = value;
+                });
+              },
+            ),
+          ),
+          ListTile(
+            title: const Text('Medium'),
+            leading: Radio(
+              value: TaskImportance.Medium,
+              groupValue: _importance,
+              onChanged: (TaskImportance value) {
+                setState(() {
+                  _importance = value;
+                });
+              },
+            ),
+          ),
+          ListTile(
+            title: const Text('Least'),
+            leading: Radio(
+              value: TaskImportance.Least,
+              groupValue: _importance,
+              onChanged: (TaskImportance value) {
+                setState(() {
+                  _importance = value;
+                });
+              },
+            ),
+          ),
           Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      "Repeating task?",
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.bold),
-                    ),
-                    new Switch(
-                      value: isRepeatingTask,
-                      onChanged: (bool newValue) {
-                        setState(() {
-                          isRepeatingTask = newValue;
-                        });
-                      },
-                    ),
-                  ]),
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text(
+                  "Repeating task?",
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                ),
+                new Switch(
+                  value: isRepeatingTask,
+                  onChanged: (bool newValue) {
+                    setState(() {
+                      isRepeatingTask = newValue;
+                    });
+                  },
+                ),
+              ]),
         ]),
       ),
     );
@@ -239,6 +250,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
 
 class _PetPageState extends State<PetPage> {
   String petName = "pet";
+  double petHappiness = 0.8;
   void navBar(int index) {
     setState(() {
       _selectedIndex = index;
@@ -266,7 +278,25 @@ class _PetPageState extends State<PetPage> {
         padding: EdgeInsets.all(15.0),
         child: ListView(children: <Widget>[
           Column(
-            children: <Widget>[Text("$petName stats")],
+            children: <Widget>[
+              Text("$petName stats"),
+              Row(children: [
+                Text(
+                  "Happiness",
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                ),
+                new LinearPercentIndicator(
+                  width: MediaQuery.of(context).size.width - 70,
+                  // set "70" to percent
+                  animation: true,
+                  lineHeight: 20.0,
+                  animationDuration: 2500,
+                  percent: petHappiness,
+                  linearStrokeCap: LinearStrokeCap.roundAll,
+                  progressColor: Colors.green,
+                ),
+              ]),
+            ],
           ),
         ]),
       ),
@@ -299,4 +329,3 @@ class _PetPageState extends State<PetPage> {
     );
   }
 }
-

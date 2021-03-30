@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   intl: ^0.16.1
+  percent_indicator: "^2.1.7+2"
   flutter:
     sdk: flutter
   
