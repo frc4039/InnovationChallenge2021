@@ -251,6 +251,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
 class _PetPageState extends State<PetPage> {
   String petName = "pet";
   double petHappiness = 0.8;
+  double petHunger = 0.1;
   void navBar(int index) {
     setState(() {
       _selectedIndex = index;
@@ -290,10 +291,26 @@ class _PetPageState extends State<PetPage> {
                   // set "70" to percent
                   animation: true,
                   lineHeight: 20.0,
-                  animationDuration: 2500,
+                  animationDuration: (2500*petHappiness).toInt(),
                   percent: petHappiness,
                   linearStrokeCap: LinearStrokeCap.roundAll,
-                  progressColor: Colors.green,
+                  progressColor: Colors.black,
+                ),
+              ]),
+              Row(children: [
+                Text(
+                  "Hunger",
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                ),
+                new LinearPercentIndicator(
+                  width: MediaQuery.of(context).size.width - 70,
+                  // set "70" to percent
+                  animation: true,
+                  lineHeight: 20.0,
+                  animationDuration: (2500*petHunger).toInt(),
+                  percent: petHunger,
+                  linearStrokeCap: LinearStrokeCap.roundAll,
+                  progressColor: Colors.black,
                 ),
               ]),
             ],
