@@ -279,41 +279,62 @@ class _PetPageState extends State<PetPage> {
         padding: EdgeInsets.all(15.0),
         child: ListView(children: <Widget>[
           Column(children: <Widget>[
-            Text("$petName stats"),
-            Row(children: [
-              Column(children: <Widget>[
-                Text(
-                  "Happiness",
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Hunger",
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                ),
-              ]),
-              Column(children: <Widget>[
-                new LinearPercentIndicator(
-                  width: MediaQuery.of(context).size.width - 70,
-                  // set "70" to percent
-                  animation: true,
-                  lineHeight: 20.0,
-                  animationDuration: (2500 * petHappiness).toInt(),
-                  percent: petHappiness,
-                  linearStrokeCap: LinearStrokeCap.roundAll,
-                  progressColor: Colors.black,
-                ),
-                new LinearPercentIndicator(
-                  width: MediaQuery.of(context).size.width - 70,
-                  // set "70" to percent
-                  animation: true,
-                  lineHeight: 20.0,
-                  animationDuration: (2500 * petHunger).toInt(),
-                  percent: petHunger,
-                  linearStrokeCap: LinearStrokeCap.roundAll,
-                  progressColor: Colors.black,
-                ),
-              ]),
-            ])
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: Text(
+                "$petName stats",
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        "Happiness",
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        "Hunger",
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ]),
+                  Column(children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: new LinearPercentIndicator(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        animation: true,
+                        lineHeight: 20.0,
+                        animationDuration: (2500 * petHappiness).toInt(),
+                        percent: petHappiness,
+                        linearStrokeCap: LinearStrokeCap.roundAll,
+                        progressColor: Colors.black,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: new LinearPercentIndicator(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        animation: true,
+                        lineHeight: 20.0,
+                        animationDuration: (2500 * petHunger).toInt(),
+                        percent: petHunger,
+                        linearStrokeCap: LinearStrokeCap.roundAll,
+                        progressColor: Colors.black,
+                      ),
+                    ),
+                  ]),
+                ])
           ]),
         ]),
       ),
