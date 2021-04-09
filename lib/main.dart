@@ -6,6 +6,10 @@ import 'package:percent_indicator/percent_indicator.dart';
 
 int _selectedIndex = 0;
 
+String petName = "Pet";
+double petHappiness = 0.8;
+double petHunger = 0.1;
+
 void main() {
   runApp(StatelessTaskPage());
 }
@@ -37,6 +41,15 @@ class StatelessPetPage extends StatelessWidget {
   }
 }
 
+class StatelessPetNamePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: PetNamePage(),
+    );
+  }
+}
+
 class TaskPage extends StatefulWidget {
   TaskPage({Key key}) : super(key: key);
   @override
@@ -53,6 +66,12 @@ class PetPage extends StatefulWidget {
   PetPage({Key key}) : super(key: key);
   @override
   _PetPageState createState() => _PetPageState();
+}
+
+class PetNamePage extends StatefulWidget {
+  PetNamePage({Key key}) : super(key: key);
+  @override
+  _PetNamePageState createState() => _PetNamePageState();
 }
 
 class _TaskPageState extends State<TaskPage> {
@@ -249,9 +268,6 @@ class _NewTaskPageState extends State<NewTaskPage> {
 }
 
 class _PetPageState extends State<PetPage> {
-  String petName = "pet";
-  double petHappiness = 0.8;
-  double petHunger = 0.1;
   void navBar(int index) {
     setState(() {
       _selectedIndex = index;
@@ -273,6 +289,17 @@ class _PetPageState extends State<PetPage> {
           'Pet',
           style: TextStyle(color: Colors.black),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              runApp(StatelessPetNamePage());
+            },
+          )
+        ],
         backgroundColor: Colors.white,
       ),
       body: Padding(
@@ -364,6 +391,52 @@ class _PetPageState extends State<PetPage> {
           iconSize: 40,
           onTap: navBar,
           elevation: 5),
+    );
+  }
+}
+
+class _PetNamePageState extends State<PetNamePage> {
+  TextEditingController petNameController = TextEditingController();
+  bool isRepeatingTask = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Pet settings',
+          style: TextStyle(color: Colors.black),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              setState(() {
+                petName = petNameController.text;
+              });
+              runApp(StatelessPetPage());
+            },
+          )
+        ],
+        backgroundColor: Colors.white,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: ListView(children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              controller: petNameController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Pet name',
+              ),
+            ),
+          ),
+        ]),
+      ),
     );
   }
 }
