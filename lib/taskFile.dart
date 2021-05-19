@@ -4,9 +4,9 @@ import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
 import 'main.dart' as mainFile;
-import 'newTaskFile.dart' as NewTaskFile;
-import 'petFile.dart' as PetFile;
-import 'petSettingsFile.dart' as PetSettingsFile;
+import 'newTaskFile.dart' as newTaskFile;
+import 'petFile.dart' as petFile;
+import 'petSettingsFile.dart' as petSettingsFile;
 
 class StatelessTaskPage extends StatelessWidget {
   @override
@@ -34,7 +34,7 @@ class _TaskPageState extends State<TaskPage> {
       mainFile.selectedIndex = index;
     });
     if (index == 1) {
-      runApp(PetFile.StatelessPetPage());
+      runApp(petFile.StatelessPetPage());
     } else if (index == 2) {
       //runApp(StatelessShopPage());
     } else if (index == 3) {
@@ -57,7 +57,7 @@ class _TaskPageState extends State<TaskPage> {
               color: Colors.black,
             ),
             onPressed: () {
-              runApp(NewTaskFile.StatelessNewTaskPage());
+              runApp(newTaskFile.StatelessNewTaskPage());
             },
           )
         ],

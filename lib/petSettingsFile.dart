@@ -4,9 +4,9 @@ import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
 import 'main.dart' as mainFile;
-import 'taskFile.dart' as TaskFile;
-import 'newTaskFile.dart' as NewTaskFile;
-import 'petFile.dart' as PetFile;
+import 'taskFile.dart' as taskFile;
+import 'newTaskFile.dart' as newTaskFile;
+import 'petFile.dart' as petFile;
 
 class StatelessPetSettingsPage extends StatelessWidget {
   @override
@@ -44,7 +44,7 @@ class _PetSettingsPageState extends State<PetSettingsPage> {
               setState(() {
                 mainFile.petName = petNameController.text;
               });
-              runApp(PetFile.StatelessPetPage());
+              runApp(petFile.StatelessPetPage());
             },
           )
         ],

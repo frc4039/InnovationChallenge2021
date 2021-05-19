@@ -4,9 +4,9 @@ import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
 import 'main.dart' as mainFile;
-import 'taskFile.dart' as TaskFile;
-import 'petFile.dart' as PetFile;
-import 'petSettingsFile.dart' as PetSettingsFile;
+import 'taskFile.dart' as taskFile;
+import 'petFile.dart' as petFile;
+import 'petSettingsFile.dart' as petSettingsFile;
 
 enum TaskImportance { Highest, Medium, Least }
 
@@ -44,7 +44,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
               color: Colors.black,
             ),
             onPressed: () {
-              runApp(TaskFile.StatelessTaskPage());
+              runApp(taskFile.StatelessTaskPage());
             },
           )
         ],

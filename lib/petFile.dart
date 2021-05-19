@@ -5,9 +5,9 @@ import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import 'main.dart' as mainFile;
-import 'taskFile.dart' as TaskFile;
-import 'newTaskFile.dart' as NewTaskFile;
-import 'petSettingsFile.dart' as PetSettingsFile;
+import 'taskFile.dart' as taskFile;
+import 'newTaskFile.dart' as newTaskFile;
+import 'petSettingsFile.dart' as petSettingsFile;
 
 class StatelessPetPage extends StatelessWidget {
   @override
@@ -30,7 +30,7 @@ class _PetPageState extends State<PetPage> {
       mainFile.selectedIndex = index;
     });
     if (index == 0) {
-      runApp(TaskFile.StatelessTaskPage());
+      runApp(taskFile.StatelessTaskPage());
     } else if (index == 2) {
       //runApp(StatelessShopPage());
     } else if (index == 3) {
@@ -53,7 +53,7 @@ class _PetPageState extends State<PetPage> {
               color: Colors.black,
             ),
             onPressed: () {
-              runApp(PetSettingsFile.StatelessPetSettingsPage());
+              runApp(petSettingsFile.StatelessPetSettingsPage());
             },
           )
         ],
