@@ -5,8 +5,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 
 import 'main.dart' as mainFile;
 import 'taskFile.dart' as taskFile;
-import 'newTaskFile.dart' as newTaskFile;
-import 'petSettingsFile.dart' as petSettingsFile;
+import 'settingsFile.dart' as settingsFile;
 
 class StatelessPetPage extends StatelessWidget {
   @override
@@ -34,7 +33,7 @@ class _PetPageState extends State<PetPage> {
     } else if (index == 2) {
       //runApp(StatelessShopPage());
     } else if (index == 3) {
-      //runApp(StatelessSettingsPage());
+      runApp(settingsFile.StatelessSettingsPage());
     }
   }
 
@@ -44,19 +43,9 @@ class _PetPageState extends State<PetPage> {
       appBar: AppBar(
         title: Text(
           'Pet',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.bold),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              runApp(petSettingsFile.StatelessPetSettingsPage());
-            },
-          )
-        ],
         backgroundColor: Colors.white,
       ),
       body: Padding(
@@ -66,8 +55,8 @@ class _PetPageState extends State<PetPage> {
             Padding(
               padding: EdgeInsets.all(8),
               child: Text(
-                mainFile.petName + " stats",
-                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                mainFile.petName + "'s stats",
+                style: TextStyle(fontSize: 24.0),
               ),
             ),
             Row(
@@ -79,16 +68,21 @@ class _PetPageState extends State<PetPage> {
                       padding: EdgeInsets.all(8),
                       child: Text(
                         "Happiness",
-                        style: TextStyle(
-                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 20.0),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.all(8),
                       child: Text(
                         "Hunger",
-                        style: TextStyle(
-                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 20.0),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        "Health",
+                        style: TextStyle(fontSize: 20.0),
                       ),
                     ),
                   ]),
@@ -112,8 +106,22 @@ class _PetPageState extends State<PetPage> {
                         width: MediaQuery.of(context).size.width * 0.5,
                         animation: true,
                         lineHeight: 20.0,
-                        animationDuration: (2500 * mainFile.petHunger).toInt(),
+                        animationDuration:
+                            (250 + 2500 * mainFile.petHunger).toInt(),
                         percent: mainFile.petHunger,
+                        linearStrokeCap: LinearStrokeCap.roundAll,
+                        progressColor: Colors.black,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: new LinearPercentIndicator(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        animation: true,
+                        lineHeight: 20.0,
+                        animationDuration:
+                            (500 + 2500 * mainFile.petHunger).toInt(),
+                        percent: mainFile.petHealth,
                         linearStrokeCap: LinearStrokeCap.roundAll,
                         progressColor: Colors.black,
                       ),

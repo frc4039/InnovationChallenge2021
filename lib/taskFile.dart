@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'main.dart' as mainFile;
 import 'newTaskFile.dart' as newTaskFile;
 import 'petFile.dart' as petFile;
-import 'petSettingsFile.dart' as petSettingsFile;
+import 'settingsFile.dart' as settingsFile;
 
 class StatelessTaskPage extends StatelessWidget {
   @override
@@ -25,7 +25,6 @@ class TaskPage extends StatefulWidget {
 }
 
 class _TaskPageState extends State<TaskPage> {
-  String name = "test";
   String timeDay = DateFormat.jm().format(DateTime.now()).toString() +
       ", " +
       DateFormat.yMMMMd().format(DateTime.now()).toString();
@@ -37,9 +36,9 @@ class _TaskPageState extends State<TaskPage> {
     if (index == 1) {
       runApp(petFile.StatelessPetPage());
     } else if (index == 2) {
-      //runApp(StatelessShopPage());
+      //runApp(shopFile.StatelessShopPage());
     } else if (index == 3) {
-      //runApp(StatelessSettingsPage());
+      runApp(settingsFile.StatelessSettingsPage());
     }
   }
 
@@ -48,8 +47,9 @@ class _TaskPageState extends State<TaskPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Good Morning $name',
-          style: TextStyle(color: Colors.black),
+          'Good Morning ' + mainFile.userName,
+          style: TextStyle(
+              color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.bold),
         ),
         actions: <Widget>[
           IconButton(
@@ -68,10 +68,18 @@ class _TaskPageState extends State<TaskPage> {
         padding: EdgeInsets.all(15.0),
         child: ListView(children: <Widget>[
           Column(
-            children: <Widget>[Text("It is: " + timeDay)],
+            children: <Widget>[
+              Text(
+                "It is: " + timeDay,
+                style: TextStyle(fontSize: 24.0),
+              )
+            ],
           ),
           Container(
-            child: Text("Tasks for today are:"),
+            child: Text(
+              "Tasks for today are:",
+              style: TextStyle(fontSize: 24.0),
+            ),
           ),
         ]),
       ),

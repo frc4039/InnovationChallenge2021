@@ -2,10 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import 'main.dart' as mainFile;
 import 'taskFile.dart' as taskFile;
-import 'petFile.dart' as petFile;
-import 'petSettingsFile.dart' as petSettingsFile;
 
 enum TaskImportance { Highest, Medium, Least }
 
@@ -35,7 +32,8 @@ class _NewTaskPageState extends State<NewTaskPage> {
       appBar: AppBar(
         title: Text(
           'Create new task',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.bold),
         ),
         actions: <Widget>[
           IconButton(
@@ -54,30 +52,38 @@ class _NewTaskPageState extends State<NewTaskPage> {
         padding: EdgeInsets.all(15.0),
         child: ListView(children: <Widget>[
           Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.symmetric(vertical: 5.0),
             child: TextField(
               controller: taskName,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Task name',
               ),
+              style: TextStyle(fontSize: 20.0),
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.symmetric(vertical: 15.0),
             child: TextField(
               controller: taskName,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Task details',
               ),
+              style: TextStyle(fontSize: 20.0),
             ),
           ),
           Container(
-            child: Text("Task importance"),
+            child: Text(
+              "Task importance",
+              style: TextStyle(fontSize: 24.0),
+            ),
           ),
           ListTile(
-            title: const Text('Highest'),
+            title: const Text(
+              'Highest',
+              style: TextStyle(fontSize: 20.0),
+            ),
             leading: Radio(
               value: TaskImportance.Highest,
               groupValue: _importance,
@@ -89,7 +95,10 @@ class _NewTaskPageState extends State<NewTaskPage> {
             ),
           ),
           ListTile(
-            title: const Text('Medium'),
+            title: const Text(
+              'Medium',
+              style: TextStyle(fontSize: 20.0),
+            ),
             leading: Radio(
               value: TaskImportance.Medium,
               groupValue: _importance,
@@ -101,7 +110,10 @@ class _NewTaskPageState extends State<NewTaskPage> {
             ),
           ),
           ListTile(
-            title: const Text('Least'),
+            title: const Text(
+              'Least',
+              style: TextStyle(fontSize: 20.0),
+            ),
             leading: Radio(
               value: TaskImportance.Least,
               groupValue: _importance,
@@ -112,23 +124,36 @@ class _NewTaskPageState extends State<NewTaskPage> {
               },
             ),
           ),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(
-                  "Repeating task?",
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          Row(children: [
+            Text(
+              "Repeating task?",
+              style: TextStyle(fontSize: 24.0),
+            ),
+            Switch(
+              value: isRepeatingTask,
+              onChanged: (bool newValue) {
+                setState(() {
+                  isRepeatingTask = newValue;
+                });
+              },
+            ),
+          ]),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 15.0),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                onPrimary: Colors.white,
+                primary: Colors.black,
+                minimumSize: Size(256, 48),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                new Switch(
-                  value: isRepeatingTask,
-                  onChanged: (bool newValue) {
-                    setState(() {
-                      isRepeatingTask = newValue;
-                    });
-                  },
-                ),
-              ]),
+                textStyle: TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+              ),
+              onPressed: () {},
+              child: Text('Create Task'),
+            ),
+          ),
         ]),
       ),
     );

@@ -2,14 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'taskFile.dart' as taskFile;
-import 'newTaskFile.dart' as newTaskFile;
-import 'petFile.dart' as petFile;
-import 'petSettingsFile.dart' as petSettingsFile;
 
 int selectedIndex = 0;
 
-String petName = "Pet";
-double petHappiness = 0.8;
-double petHunger = 0.1;
+String petName = "Paws";
+String userName = "";
+double petHappiness = 1.0;
+double petHunger = 1.0;
+double petHealth = 1.0;
 
 void main() => runApp(taskFile.StatelessTaskPage());
