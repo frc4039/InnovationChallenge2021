@@ -66,7 +66,7 @@ class _PetPageState extends State<PetPage> {
             Padding(
               padding: EdgeInsets.all(8),
               child: Text(
-                mainFile.petName + "stats",
+                mainFile.petName + " stats",
                 style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
               ),
             ),
