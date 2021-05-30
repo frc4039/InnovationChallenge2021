@@ -13,6 +13,7 @@ class StatelessTaskPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: TaskPage(),
+      theme: ThemeData(fontFamily: 'RopaSans'),
     );
   }
 }

@@ -12,6 +12,7 @@ class StatelessPetSettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: PetSettingsPage(),
+      theme: ThemeData(fontFamily: 'RopaSans'),
     );
   }
 }

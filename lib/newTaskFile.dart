@@ -14,6 +14,7 @@ class StatelessNewTaskPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: NewTaskPage(),
+      theme: ThemeData(fontFamily: 'RopaSans'),
     );
   }
 }
