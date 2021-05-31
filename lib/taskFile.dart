@@ -81,6 +81,324 @@ class _TaskPageState extends State<TaskPage> {
               style: TextStyle(fontSize: 24.0),
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.black,
+                        minimumSize: Size(192, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('Create Task'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.black,
+                        minimumSize: Size(192, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('Create Task'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.black,
+                        minimumSize: Size(192, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('Create Task'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.black,
+                        minimumSize: Size(192, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('Create Task'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.black,
+                        minimumSize: Size(192, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('Create Task'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.black,
+                        minimumSize: Size(192, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('Create Task'),
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.green,
+                        minimumSize: Size(48, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('✓'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.green,
+                        minimumSize: Size(48, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('✓'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.green,
+                        minimumSize: Size(48, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('✓'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.green,
+                        minimumSize: Size(48, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('✓'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.green,
+                        minimumSize: Size(48, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('✓'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.white,
+                        primary: Colors.green,
+                        minimumSize: Size(48, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        textStyle:
+                            TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                      ),
+                      onPressed: () {},
+                      child: Text('✓'),
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.red,
+                          minimumSize: Size(48, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () {},
+                        child: Text('✘'),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.red,
+                          minimumSize: Size(48, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () {},
+                        child: Text('✘'),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.red,
+                          minimumSize: Size(48, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () {},
+                        child: Text('✘'),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.red,
+                          minimumSize: Size(48, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () {},
+                        child: Text('✘'),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.red,
+                          minimumSize: Size(48, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () {},
+                        child: Text('✘'),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.red,
+                          minimumSize: Size(48, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () {},
+                        child: Text('✘'),
+                      )),
+                ],
+              ),
+            ],
+          )
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
