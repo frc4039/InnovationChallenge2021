@@ -36,7 +36,7 @@ class Storage {
         "\n" +
         details +
         "\n" +
-        date.toString() +
+        date.microsecondsSinceEpoch.toString() +
         "\n" +
         importance.toString() +
         "\n" +
@@ -63,12 +63,14 @@ class Storage {
     final path = (await getApplicationDocumentsDirectory()).path;
     Directory("$path/tasks").list().forEach((i) async {
       List task = (await File(i.path).readAsString()).split("\n");
-      if (task[3] == "1") {
-        highestPriorityToday.add(task[0]);
-      } else if (task[3] == "2") {
-        mediumPriorityToday.add(task[0]);
-      } else {
-        leastPriorityToday.add(task[0]);
+      if (DateTime.now().microsecondsSinceEpoch >= task[2]) {
+        if (task[3] == "1") {
+          highestPriorityToday.add(task[0]);
+        } else if (task[3] == "2") {
+          mediumPriorityToday.add(task[0]);
+        } else {
+          leastPriorityToday.add(task[0]);
+        }
       }
     });
   }
