@@ -12,14 +12,17 @@ class StatelessTaskPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: TaskPage(),
+      home: TaskPage(
+        storage: mainFile.Storage(),
+      ),
       theme: ThemeData(fontFamily: 'RopaSans'),
     );
   }
 }
 
 class TaskPage extends StatefulWidget {
-  TaskPage({Key key}) : super(key: key);
+  final mainFile.Storage storage;
+  TaskPage({Key key, @required this.storage}) : super(key: key);
   @override
   _TaskPageState createState() => _TaskPageState();
 }
@@ -77,20 +80,24 @@ class _TaskPageState extends State<TaskPage> {
           ),
           Container(
             child: Text(
-              "Tasks for today are:",
+              "\nTasks for today are:",
               style: TextStyle(fontSize: 24.0),
             ),
           ),
           Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (mainFile.highestPriorityToday.length == 0 &&
+                    mainFile.mediumPriorityToday.length == 0 &&
+                    mainFile.leastPriorityToday.length == 0)
+                  Text("There are no tasks for today.\n",
+                      style: TextStyle(fontSize: 24.0, color: Colors.grey)),
+              ]),
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              if (mainFile.highestPriorityToday.length == 0 &&
-                  mainFile.mediumPriorityToday.length == 0 &&
-                  mainFile.leastPriorityToday.length == 0)
-                Text(
-                    "\nThere are no tasks for today,\nWhy not try adding some?",
-                    style: TextStyle(fontSize: 24.0)),
               Column(
                 children: [
                   for (var i in mainFile.highestPriorityToday)
@@ -165,7 +172,10 @@ class _TaskPageState extends State<TaskPage> {
                           textStyle:
                               TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
                         ),
-                        onPressed: () {},
+                        onPressed: () async {
+                          await widget.storage.closeTask(true, i);
+                          setState(() {});
+                        },
                         child: Text('✓'),
                       ),
                     ),
@@ -183,7 +193,10 @@ class _TaskPageState extends State<TaskPage> {
                           textStyle:
                               TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
                         ),
-                        onPressed: () {},
+                        onPressed: () async {
+                          await widget.storage.closeTask(true, i);
+                          setState(() {});
+                        },
                         child: Text('✓'),
                       ),
                     ),
@@ -201,7 +214,10 @@ class _TaskPageState extends State<TaskPage> {
                           textStyle:
                               TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
                         ),
-                        onPressed: () {},
+                        onPressed: () async {
+                          await widget.storage.closeTask(true, i);
+                          setState(() {});
+                        },
                         child: Text('✓'),
                       ),
                     ),
@@ -223,7 +239,10 @@ class _TaskPageState extends State<TaskPage> {
                             textStyle: TextStyle(
                                 fontSize: 24.0, fontFamily: 'RopaSans'),
                           ),
-                          onPressed: () {},
+                          onPressed: () async {
+                            await widget.storage.closeTask(false, i);
+                            setState(() {});
+                          },
                           child: Text('✘'),
                         )),
                   for (var i in mainFile.mediumPriorityToday)
@@ -240,7 +259,10 @@ class _TaskPageState extends State<TaskPage> {
                             textStyle: TextStyle(
                                 fontSize: 24.0, fontFamily: 'RopaSans'),
                           ),
-                          onPressed: () {},
+                          onPressed: () async {
+                            await widget.storage.closeTask(false, i);
+                            setState(() {});
+                          },
                           child: Text('✘'),
                         )),
                   for (var i in mainFile.leastPriorityToday)
@@ -257,13 +279,228 @@ class _TaskPageState extends State<TaskPage> {
                             textStyle: TextStyle(
                                 fontSize: 24.0, fontFamily: 'RopaSans'),
                           ),
-                          onPressed: () {},
+                          onPressed: () async {
+                            await widget.storage.closeTask(false, i);
+                            setState(() {});
+                          },
                           child: Text('✘'),
                         )),
                 ],
               ),
             ],
-          )
+          ),
+          Container(
+            child: Text(
+              "\nUpcoming tasks are:",
+              style: TextStyle(fontSize: 24.0),
+            ),
+          ),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (mainFile.highestPriorityUpcoming.length == 0 &&
+                    mainFile.mediumPriorityUpcoming.length == 0 &&
+                    mainFile.leastPriorityUpcoming.length == 0)
+                  Text(
+                      "There are no upcoming tasks.\nWhy not try adding some?\n",
+                      style: TextStyle(fontSize: 24.0, color: Colors.grey)),
+              ]),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  for (var i in mainFile.highestPriorityUpcoming)
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.black,
+                          minimumSize: Size(192, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () {},
+                        child: Text(i),
+                      ),
+                    ),
+                  for (var i in mainFile.mediumPriorityUpcoming)
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.black,
+                          minimumSize: Size(192, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () {},
+                        child: Text(i),
+                      ),
+                    ),
+                  for (var i in mainFile.leastPriorityUpcoming)
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.black,
+                          minimumSize: Size(192, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () {},
+                        child: Text(i),
+                      ),
+                    ),
+                ],
+              ),
+              Column(
+                children: [
+                  for (var i in mainFile.highestPriorityUpcoming)
+                    Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.green,
+                          minimumSize: Size(48, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () async {
+                          await widget.storage.closeTask(true, i);
+                          setState(() {});
+                        },
+                        child: Text('✓'),
+                      ),
+                    ),
+                  for (var i in mainFile.mediumPriorityUpcoming)
+                    Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.green,
+                          minimumSize: Size(48, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () async {
+                          await widget.storage.closeTask(true, i);
+                          setState(() {});
+                        },
+                        child: Text('✓'),
+                      ),
+                    ),
+                  for (var i in mainFile.leastPriorityUpcoming)
+                    Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors.white,
+                          primary: Colors.green,
+                          minimumSize: Size(48, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          textStyle:
+                              TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+                        ),
+                        onPressed: () async {
+                          await widget.storage.closeTask(true, i);
+                          setState(() {});
+                        },
+                        child: Text('✓'),
+                      ),
+                    ),
+                ],
+              ),
+              Column(
+                children: [
+                  for (var i in mainFile.highestPriorityUpcoming)
+                    Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5.0),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            onPrimary: Colors.white,
+                            primary: Colors.red,
+                            minimumSize: Size(48, 48),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            textStyle: TextStyle(
+                                fontSize: 24.0, fontFamily: 'RopaSans'),
+                          ),
+                          onPressed: () async {
+                            await widget.storage.closeTask(false, i);
+                            setState(() {});
+                          },
+                          child: Text('✘'),
+                        )),
+                  for (var i in mainFile.mediumPriorityUpcoming)
+                    Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5.0),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            onPrimary: Colors.white,
+                            primary: Colors.red,
+                            minimumSize: Size(48, 48),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            textStyle: TextStyle(
+                                fontSize: 24.0, fontFamily: 'RopaSans'),
+                          ),
+                          onPressed: () async {
+                            await widget.storage.closeTask(false, i);
+                            setState(() {});
+                          },
+                          child: Text('✘'),
+                        )),
+                  for (var i in mainFile.leastPriorityUpcoming)
+                    Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5.0),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            onPrimary: Colors.white,
+                            primary: Colors.red,
+                            minimumSize: Size(48, 48),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            textStyle: TextStyle(
+                                fontSize: 24.0, fontFamily: 'RopaSans'),
+                          ),
+                          onPressed: () async {
+                            await widget.storage.closeTask(false, i);
+                            setState(() {});
+                          },
+                          child: Text('✘'),
+                        )),
+                ],
+              ),
+            ],
+          ),
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
