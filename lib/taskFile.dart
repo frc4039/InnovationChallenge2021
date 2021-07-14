@@ -223,7 +223,7 @@ class _TaskPageState extends State<TaskPage> {
                     ),
                 ],
               ),
-              Column(
+              /*Column(
                 children: [
                   for (var i in mainFile.highestPriorityToday)
                     Padding(
@@ -286,7 +286,7 @@ class _TaskPageState extends State<TaskPage> {
                           child: Text('✘'),
                         )),
                 ],
-              ),
+              ),*/
             ],
           ),
           Container(
@@ -435,7 +435,7 @@ class _TaskPageState extends State<TaskPage> {
                     ),
                 ],
               ),
-              Column(
+              /*Column(
                 children: [
                   for (var i in mainFile.highestPriorityUpcoming)
                     Padding(
@@ -498,12 +498,12 @@ class _TaskPageState extends State<TaskPage> {
                           child: Text('✘'),
                         )),
                 ],
-              ),
+              ),*/
             ],
           ),
         ]),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      /*bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
                 icon: Icon(Icons.list),
@@ -528,7 +528,7 @@ class _TaskPageState extends State<TaskPage> {
           selectedItemColor: Colors.black,
           iconSize: 40,
           onTap: navBar,
-          elevation: 5),
+          elevation: 5),*/
     );
   }
 }

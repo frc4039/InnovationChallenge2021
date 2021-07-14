@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'dart:io';
 
 import 'welcomeFile.dart' as welcomeFile;
@@ -36,11 +37,27 @@ String tOD() {
 class Storage {
   void newTask(String name, String details, DateTime date, int importance,
       bool repeating) async {
+    if (date.millisecondsSinceEpoch > DateTime.now().millisecondsSinceEpoch) {
+      FlutterLocalNotificationsPlugin fltrNotification;
+      var initilizationsSettings = new InitializationSettings();
+      fltrNotification = new FlutterLocalNotificationsPlugin();
+      fltrNotification.initialize(initilizationsSettings);
+      fltrNotification.schedule(
+          DateTime.now().millisecondsSinceEpoch % 1000,
+          'Paws Abilities Task Reminder',
+          name,
+          date.add(Duration(hours: 6)),
+          const NotificationDetails(
+              android: AndroidNotificationDetails('Paws Abilities',
+                  'Task Reminder', 'Paws Abilities Task Reminder',
+                  icon: 'app_icon')),
+          androidAllowWhileIdle: true);
+    }
     String contents = name +
         "\n" +
         details +
         "\n" +
-        date.microsecondsSinceEpoch.toString() +
+        date.millisecondsSinceEpoch.toString() +
         "\n" +
         importance.toString() +
         "\n" +
@@ -50,7 +67,7 @@ class Storage {
     new Directory(path + "/tasks").create();
     final file = File(path + "/tasks/" + fn);
     file.writeAsString(contents);
-    load();
+    load(true);
   }
 
   /*void newFriend(String name, String number, String tag, int platform,
@@ -64,7 +81,7 @@ class Storage {
     file.writeAsString(contents);
   }*/
 
-  void load() async {
+  void load(bool runSTP) async {
     highestPriorityToday = [];
     mediumPriorityToday = [];
     leastPriorityToday = [];
@@ -74,7 +91,7 @@ class Storage {
     final path = (await getApplicationDocumentsDirectory()).path;
     Directory("$path/tasks").list().forEach((i) async {
       List task = (await File(i.path).readAsString()).split("\n");
-      if (DateTime.now().microsecondsSinceEpoch >= int.parse(task[2])) {
+      if (DateTime.now().millisecondsSinceEpoch >= int.parse(task[2])) {
         if (task[3] == "1") {
           highestPriorityToday.add(task[0]);
         } else if (task[3] == "2") {
@@ -91,7 +108,9 @@ class Storage {
           leastPriorityUpcoming.add(task[0]);
         }
       }
-      runApp(taskFile.StatelessTaskPage());
+      if (runSTP) {
+        runApp(taskFile.StatelessTaskPage());
+      }
     });
   }
 
@@ -103,7 +122,8 @@ class Storage {
         await i.delete();
       }
     });
-    load();
+    await sleep(Duration(milliseconds: 250));
+    load(true);
   }
 }
 

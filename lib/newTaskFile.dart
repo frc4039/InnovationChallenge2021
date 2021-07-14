@@ -71,7 +71,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
               style: TextStyle(fontSize: 20.0),
             ),
           ),
-          Container(
+          /*Container(
             padding: EdgeInsets.symmetric(vertical: 15.0),
             child: TextField(
               controller: taskDetails,
@@ -81,26 +81,29 @@ class _NewTaskPageState extends State<NewTaskPage> {
               ),
               style: TextStyle(fontSize: 20.0),
             ),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              onPrimary: Colors.white,
-              primary: Colors.black,
-              minimumSize: Size(256, 48),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+          ),*/
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 15.0),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                onPrimary: Colors.white,
+                primary: Colors.black,
+                minimumSize: Size(256, 48),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                textStyle: TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
               ),
-              textStyle: TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
+              onPressed: () async {
+                taskDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime.now(),
+                    lastDate: DateTime.now().add(const Duration(days: 365)));
+                setState(() {});
+              },
+              child: Text('Date: ' + DateFormat('yyyy-MM-dd').format(taskDate)),
             ),
-            onPressed: () async {
-              taskDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime.now(),
-                  lastDate: DateTime.now().add(const Duration(days: 365)));
-              setState(() {});
-            },
-            child: Text('Date: ' + DateFormat('yyyy-MM-dd').format(taskDate)),
           ),
           Container(
             child: Text(
@@ -153,7 +156,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
               },
             ),
           ),
-          Row(children: [
+          /*Row(children: [
             Text(
               "Repeating task?",
               style: TextStyle(fontSize: 24.0),
@@ -166,7 +169,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
                 });
               },
             ),
-          ]),
+          ]),*/
           Padding(
             padding: EdgeInsets.symmetric(vertical: 15.0),
             child: ElevatedButton(

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
+import 'package:package_info/package_info.dart';
 
 import 'main.dart' as mainFile;
 import 'taskFile.dart' as taskFile;
@@ -26,10 +27,25 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  PackageInfo _packageInfo = PackageInfo(
+    appName: 'Unknown',
+    packageName: 'Unknown',
+    version: 'Unknown',
+    buildNumber: 'Unknown',
+  );
+
   @override
   void initState() {
     super.initState();
-    widget.storage.load();
+    _initPackageInfo();
+    widget.storage.load(false);
+  }
+
+  Future<void> _initPackageInfo() async {
+    final PackageInfo info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
+    });
   }
 
   String timeDay = DateFormat.jm().format(DateTime.now()).toString() +
@@ -39,35 +55,19 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Good ' + mainFile.tOD() + ' ' + mainFile.userName),
-      content: const Text('How are you today?'),
+      title: Text(_packageInfo.appName),
+      content: Text("Preview build " +
+          _packageInfo.version +
+          "+" +
+          _packageInfo.buildNumber +
+          "\n" +
+          _packageInfo.packageName),
       actions: <Widget>[
         TextButton(
           onPressed: () {
             runApp(taskFile.StatelessTaskPage());
           },
-          child: const Text('Good'),
-        ),
-        TextButton(
-          onPressed: () => showDialog<String>(
-            context: context,
-            builder: (BuildContext context) => AlertDialog(
-              title: Text("There are people here for you"),
-              content: const Text(
-                  'We suggest reaching out to friends or trusted resources for help.'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('Friends'),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('Resources'),
-                ),
-              ],
-            ),
-          ),
-          child: const Text('Bad'),
+          child: const Text('Continue'),
         ),
       ],
     );
