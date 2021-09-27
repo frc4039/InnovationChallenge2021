@@ -7,6 +7,7 @@ import 'dart:io';
 
 import 'welcomeFile.dart' as welcomeFile;
 import 'taskFile.dart' as taskFile;
+import 'getHelpFile.dart' as getHelpFile;
 
 int selectedIndex = 0;
 

@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
-import 'package:package_info/package_info.dart';
 
 import 'main.dart' as mainFile;
 import 'taskFile.dart' as taskFile;
+import 'getHelpFile.dart' as getHelpFile;
 
 class StatelessWelcomePage extends StatelessWidget {
   @override
@@ -27,25 +27,10 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  PackageInfo _packageInfo = PackageInfo(
-    appName: 'Unknown',
-    packageName: 'Unknown',
-    version: 'Unknown',
-    buildNumber: 'Unknown',
-  );
-
   @override
   void initState() {
     super.initState();
-    _initPackageInfo();
     widget.storage.load(false);
-  }
-
-  Future<void> _initPackageInfo() async {
-    final PackageInfo info = await PackageInfo.fromPlatform();
-    setState(() {
-      _packageInfo = info;
-    });
   }
 
   String timeDay = DateFormat.jm().format(DateTime.now()).toString() +
@@ -55,19 +40,16 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(_packageInfo.appName),
-      content: Text("Preview build " +
-          _packageInfo.version +
-          "+" +
-          _packageInfo.buildNumber +
-          "\n" +
-          _packageInfo.packageName),
+      title: Text("Paws Abilities (Beta)"),
+      content: Text("Welcome to Paws Abilities!" + "\n" + "How are you today?"),
       actions: <Widget>[
         TextButton(
-          onPressed: () {
-            runApp(taskFile.StatelessTaskPage());
-          },
-          child: const Text('Continue'),
+          onPressed: () => runApp(getHelpFile.StatelessGetHelpPage()),
+          child: const Text('Bad'),
+        ),
+        TextButton(
+          onPressed: () => runApp(taskFile.StatelessTaskPage()),
+          child: const Text('Good'),
         ),
       ],
     );
