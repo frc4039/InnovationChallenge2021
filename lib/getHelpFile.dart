@@ -53,7 +53,7 @@ class _GetHelpPageState extends State<GetHelpPage> {
         padding: EdgeInsets.all(15.0),
         child: ListView(children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
+            padding: EdgeInsets.symmetric(vertical: 20.0),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 onPrimary: Colors.white,
@@ -67,14 +67,17 @@ class _GetHelpPageState extends State<GetHelpPage> {
               onPressed: () {
                 launch("tel://18006686868");
               },
-              child: Text(
-                "\nKid's Help Phone\n+1(800)668-6868\n",
-                textAlign: TextAlign.center,
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Text(
+                  "Kid's Help Phone\n+1(800)668-6868",
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
+            padding: EdgeInsets.symmetric(vertical: 20.0),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 onPrimary: Colors.white,
@@ -88,14 +91,17 @@ class _GetHelpPageState extends State<GetHelpPage> {
               onPressed: () {
                 launch("tel://18334564566");
               },
-              child: Text(
-                "\nCanada Suicide Prevention Service\n+1(833)456-4566\n",
-                textAlign: TextAlign.center,
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Text(
+                  "Canada Suicide Prevention Service\n+1(833)456-4566",
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
+            padding: EdgeInsets.symmetric(vertical: 20.0),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 onPrimary: Colors.white,
@@ -109,9 +115,12 @@ class _GetHelpPageState extends State<GetHelpPage> {
               onPressed: () {
                 launch("tel://16476944275");
               },
-              child: Text(
-                "\nLGBT Youthline Ontario\n+1(647)694-4275\n",
-                textAlign: TextAlign.center,
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Text(
+                  "LGBT Youthline Ontario\n+1(647)694-4275",
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ),
