@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'main.dart' as mainFile;
 import 'taskFile.dart' as taskFile;
 import 'petFile.dart' as petFile;
+import 'getHelpFile.dart' as getHelpFile;
 
 class StatelessSettingsPage extends StatelessWidget {
   @override
@@ -45,7 +47,7 @@ class SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Settings',
+          'Menu',
           style: TextStyle(
               color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.bold),
         ),
@@ -54,55 +56,28 @@ class SettingsPageState extends State<SettingsPage> {
       body: Padding(
         padding: EdgeInsets.all(15.0),
         child: ListView(children: <Widget>[
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              onPrimary: Colors.white,
-              primary: Colors.black,
-              minimumSize: Size(256, 48),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              textStyle: TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
-            ),
-            onPressed: () {},
-            child: Text('Reach Out'),
-          ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 15.0),
+            padding: EdgeInsets.symmetric(vertical: 20.0),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 onPrimary: Colors.white,
                 primary: Colors.black,
-                minimumSize: Size(256, 48),
+                minimumSize: Size(192, 48),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(40),
                 ),
                 textStyle: TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
               ),
-              onPressed: () {},
-              child: Text('Resources'),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
-            child: TextField(
-              controller: userNameController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'User name',
+              onPressed: () {
+                runApp(getHelpFile.StatelessGetHelpPage());
+              },
+              child: Padding(
+                padding: EdgeInsets.all(15),
+                child: Text(
+                  'Get Help',
+                  textAlign: TextAlign.center,
+                ),
               ),
-              style: TextStyle(fontSize: 20.0),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
-            child: TextField(
-              controller: petNameController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Pet name',
-              ),
-              style: TextStyle(fontSize: 20.0),
             ),
           ),
         ]),
@@ -123,7 +98,7 @@ class SettingsPageState extends State<SettingsPage> {
                 backgroundColor: Colors.green),
             BottomNavigationBarItem(
               icon: Icon(Icons.more_horiz),
-              label: 'Settings',
+              label: 'Menu',
               backgroundColor: Colors.blue,
             ),
           ],

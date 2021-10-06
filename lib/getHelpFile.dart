@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'main.dart' as mainFile;
 import 'taskFile.dart' as taskFile;
+import 'settingsFile.dart' as settingsFile;
 
 class StatelessGetHelpPage extends StatelessWidget {
   @override
@@ -43,7 +43,11 @@ class _GetHelpPageState extends State<GetHelpPage> {
               color: Colors.black,
             ),
             onPressed: () {
-              runApp(taskFile.StatelessTaskPage());
+              if (mainFile.selectedIndex == 3) {
+                runApp(settingsFile.StatelessSettingsPage());
+              } else {
+                runApp(taskFile.StatelessTaskPage());
+              }
             },
           )
         ],
@@ -60,7 +64,7 @@ class _GetHelpPageState extends State<GetHelpPage> {
                 primary: Colors.black,
                 minimumSize: Size(192, 48),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(80),
                 ),
                 textStyle: TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
               ),
@@ -68,7 +72,7 @@ class _GetHelpPageState extends State<GetHelpPage> {
                 launch("tel://18006686868");
               },
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(15),
                 child: Text(
                   "Kid's Help Phone\n+1(800)668-6868",
                   textAlign: TextAlign.center,
@@ -84,7 +88,7 @@ class _GetHelpPageState extends State<GetHelpPage> {
                 primary: Colors.black,
                 minimumSize: Size(192, 48),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(80),
                 ),
                 textStyle: TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
               ),
@@ -92,9 +96,9 @@ class _GetHelpPageState extends State<GetHelpPage> {
                 launch("tel://18334564566");
               },
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(15),
                 child: Text(
-                  "Canada Suicide Prevention Service\n+1(833)456-4566",
+                  "Canada Suicide\nPrevention Service\n+1(833)456-4566",
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -108,7 +112,7 @@ class _GetHelpPageState extends State<GetHelpPage> {
                 primary: Colors.black,
                 minimumSize: Size(192, 48),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(80),
                 ),
                 textStyle: TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
               ),
@@ -116,7 +120,7 @@ class _GetHelpPageState extends State<GetHelpPage> {
                 launch("tel://16476944275");
               },
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(15),
                 child: Text(
                   "LGBT Youthline Ontario\n+1(647)694-4275",
                   textAlign: TextAlign.center,
