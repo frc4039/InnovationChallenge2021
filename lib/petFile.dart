@@ -18,7 +18,7 @@ class StatelessPetPage extends StatelessWidget {
 }
 
 class PetPage extends StatefulWidget {
-  PetPage({Key key}) : super(key: key);
+  PetPage({Key? key}) : super(key: key);
   @override
   _PetPageState createState() => _PetPageState();
 }

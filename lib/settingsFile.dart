@@ -19,7 +19,7 @@ class StatelessSettingsPage extends StatelessWidget {
 }
 
 class SettingsPage extends StatefulWidget {
-  SettingsPage({Key key}) : super(key: key);
+  SettingsPage({Key? key}) : super(key: key);
   @override
   SettingsPageState createState() => SettingsPageState();
 }

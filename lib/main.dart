@@ -23,13 +23,15 @@ List<String> mediumPriorityUpcoming = [];
 List<String> leastPriorityUpcoming = [];
 
 String tOD() {
-  int currentHour = int.tryParse(DateFormat.H().format(DateTime.now()));
-  if (currentHour < 12) {
-    return "morning";
-  } else if (currentHour < 18) {
-    return "afternoon";
-  } else if (currentHour < 21) {
-    return "evening";
+  int? currentHour = int.tryParse(DateFormat.H().format(DateTime.now()));
+  if (currentHour != null) {
+    if (currentHour < 12) {
+      return "morning";
+    } else if (currentHour < 18) {
+      return "afternoon";
+    } else if (currentHour < 21) {
+      return "evening";
+    }
   }
   return "night";
 }
@@ -122,7 +124,7 @@ class Storage {
         await i.delete();
       }
     });
-    await sleep(Duration(milliseconds: 250));
+    sleep(Duration(milliseconds: 250));
     load(true);
   }
 }

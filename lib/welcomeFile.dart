@@ -20,7 +20,7 @@ class StatelessWelcomePage extends StatelessWidget {
 
 class WelcomePage extends StatefulWidget {
   final mainFile.Storage storage;
-  WelcomePage({Key key, @required this.storage}) : super(key: key);
+  WelcomePage({Key? key, required this.storage}) : super(key: key);
   @override
   _WelcomePageState createState() => _WelcomePageState();
 }

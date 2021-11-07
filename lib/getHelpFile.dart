@@ -21,7 +21,7 @@ class StatelessGetHelpPage extends StatelessWidget {
 
 class GetHelpPage extends StatefulWidget {
   final mainFile.Storage storage;
-  GetHelpPage({Key key, @required this.storage}) : super(key: key);
+  GetHelpPage({Key? key, required this.storage}) : super(key: key);
   @override
   _GetHelpPageState createState() => _GetHelpPageState();
 }

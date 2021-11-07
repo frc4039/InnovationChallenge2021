@@ -22,7 +22,7 @@ class StatelessTaskPage extends StatelessWidget {
 
 class TaskPage extends StatefulWidget {
   final mainFile.Storage storage;
-  TaskPage({Key key, @required this.storage}) : super(key: key);
+  TaskPage({Key? key, required this.storage}) : super(key: key);
   @override
   _TaskPageState createState() => _TaskPageState();
 }
@@ -173,7 +173,7 @@ class _TaskPageState extends State<TaskPage> {
                               TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
                         ),
                         onPressed: () async {
-                          await widget.storage.closeTask(true, i);
+                          widget.storage.closeTask(true, i);
                           setState(() {});
                         },
                         child: Text('✓'),
@@ -194,7 +194,7 @@ class _TaskPageState extends State<TaskPage> {
                               TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
                         ),
                         onPressed: () async {
-                          await widget.storage.closeTask(true, i);
+                          widget.storage.closeTask(true, i);
                           setState(() {});
                         },
                         child: Text('✓'),
@@ -215,7 +215,7 @@ class _TaskPageState extends State<TaskPage> {
                               TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
                         ),
                         onPressed: () async {
-                          await widget.storage.closeTask(true, i);
+                          widget.storage.closeTask(true, i);
                           setState(() {});
                         },
                         child: Text('✓'),
@@ -240,7 +240,7 @@ class _TaskPageState extends State<TaskPage> {
                                 fontSize: 24.0, fontFamily: 'RopaSans'),
                           ),
                           onPressed: () async {
-                            await widget.storage.closeTask(false, i);
+                            widget.storage.closeTask(false, i);
                             setState(() {});
                           },
                           child: Text('✘'),
@@ -260,7 +260,7 @@ class _TaskPageState extends State<TaskPage> {
                                 fontSize: 24.0, fontFamily: 'RopaSans'),
                           ),
                           onPressed: () async {
-                            await widget.storage.closeTask(false, i);
+                            widget.storage.closeTask(false, i);
                             setState(() {});
                           },
                           child: Text('✘'),
@@ -280,7 +280,7 @@ class _TaskPageState extends State<TaskPage> {
                                 fontSize: 24.0, fontFamily: 'RopaSans'),
                           ),
                           onPressed: () async {
-                            await widget.storage.closeTask(false, i);
+                            widget.storage.closeTask(false, i);
                             setState(() {});
                           },
                           child: Text('✘'),
@@ -385,7 +385,7 @@ class _TaskPageState extends State<TaskPage> {
                               TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
                         ),
                         onPressed: () async {
-                          await widget.storage.closeTask(true, i);
+                          widget.storage.closeTask(true, i);
                           setState(() {});
                         },
                         child: Text('✓'),
@@ -406,7 +406,7 @@ class _TaskPageState extends State<TaskPage> {
                               TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
                         ),
                         onPressed: () async {
-                          await widget.storage.closeTask(true, i);
+                          widget.storage.closeTask(true, i);
                           setState(() {});
                         },
                         child: Text('✓'),
@@ -427,7 +427,7 @@ class _TaskPageState extends State<TaskPage> {
                               TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
                         ),
                         onPressed: () async {
-                          await widget.storage.closeTask(true, i);
+                          widget.storage.closeTask(true, i);
                           setState(() {});
                         },
                         child: Text('✓'),

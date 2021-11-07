@@ -22,7 +22,7 @@ class StatelessNewTaskPage extends StatelessWidget {
 
 class NewTaskPage extends StatefulWidget {
   final mainFile.Storage storage;
-  NewTaskPage({Key key, @required this.storage}) : super(key: key);
+  NewTaskPage({Key? key, required this.storage}) : super(key: key);
   @override
   _NewTaskPageState createState() => _NewTaskPageState();
 }
@@ -93,11 +93,11 @@ class _NewTaskPageState extends State<NewTaskPage> {
                 textStyle: TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
               ),
               onPressed: () async {
-                taskDate = await showDatePicker(
+                taskDate = (await showDatePicker(
                     context: context,
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now(),
-                    lastDate: DateTime.now().add(const Duration(days: 365)));
+                    lastDate: DateTime.now().add(const Duration(days: 365))))!;
                 setState(() {});
               },
               child: Text('Date: ' + DateFormat('yyyy-MM-dd').format(taskDate)),
@@ -117,10 +117,12 @@ class _NewTaskPageState extends State<NewTaskPage> {
             leading: Radio(
               value: TaskImportance.Highest,
               groupValue: _importance,
-              onChanged: (TaskImportance value) {
-                setState(() {
-                  _importance = value;
-                });
+              onChanged: (TaskImportance? value) {
+                if (value != null) {
+                  setState(() {
+                    _importance = value;
+                  });
+                }
               },
             ),
           ),
@@ -132,10 +134,12 @@ class _NewTaskPageState extends State<NewTaskPage> {
             leading: Radio(
               value: TaskImportance.Medium,
               groupValue: _importance,
-              onChanged: (TaskImportance value) {
-                setState(() {
-                  _importance = value;
-                });
+              onChanged: (TaskImportance? value) {
+                if (value != null) {
+                  setState(() {
+                    _importance = value;
+                  });
+                }
               },
             ),
           ),
@@ -147,10 +151,12 @@ class _NewTaskPageState extends State<NewTaskPage> {
             leading: Radio(
               value: TaskImportance.Least,
               groupValue: _importance,
-              onChanged: (TaskImportance value) {
-                setState(() {
-                  _importance = value;
-                });
+              onChanged: (TaskImportance? value) {
+                if (value != null) {
+                  setState(() {
+                    _importance = value;
+                  });
+                }
               },
             ),
           ),
@@ -181,15 +187,20 @@ class _NewTaskPageState extends State<NewTaskPage> {
                 textStyle: TextStyle(fontSize: 24.0, fontFamily: 'RopaSans'),
               ),
               onPressed: () async {
-                if (_importance == TaskImportance.Highest) {
-                  widget.storage.newTask(taskName.text, taskDetails.text,
-                      taskDate, 1, isRepeatingTask);
-                } else if (_importance == TaskImportance.Medium) {
-                  widget.storage.newTask(taskName.text, taskDetails.text,
-                      taskDate, 2, isRepeatingTask);
+                if (_importance != null) {
+                  if (_importance == TaskImportance.Highest) {
+                    widget.storage.newTask(taskName.text, taskDetails.text,
+                        taskDate, 1, isRepeatingTask);
+                  } else if (_importance == TaskImportance.Medium) {
+                    widget.storage.newTask(taskName.text, taskDetails.text,
+                        taskDate, 2, isRepeatingTask);
+                  } else {
+                    widget.storage.newTask(taskName.text, taskDetails.text,
+                        taskDate, 3, isRepeatingTask);
+                  }
                 } else {
                   widget.storage.newTask(taskName.text, taskDetails.text,
-                      taskDate, 3, isRepeatingTask);
+                      taskDate, 1, isRepeatingTask);
                 }
               },
               child: Text('Create Task'),
